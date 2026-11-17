@@ -1,0 +1,15 @@
+No,Rank,JamMain,MainTim,EventDiskon,BeliBP
+1,Rendah,Sedikit,Tidak,Tidak,Tidak
+2,Rendah,Sedikit,Tidak,Ada,Tidak
+3,Menengah,Sedikit,Tidak,Tidak,Ya
+4,Tinggi,Sedang,Tidak,Tidak,Tidak
+5,Tinggi,Sedikit,Ya,Tidak,Ya
+6,Tinggi,Banyak,Ya,Ada,Tidak
+7,Menengah,Banyak,Ya,Ada,Ya
+8,Rendah,Sedang,Tidak,Tidak,Tidak
+9,Rendah,Banyak,Ya,Tidak,Ya
+10,Tinggi,Sedang,Ya,Tidak,Ya
+11,Rendah,Sedang,Ya,Ada,Ya
+12,Menengah,Sedang,Tidak,Ada,Ya
+13,Menengah,Banyak,Ya,Tidak,Ya
+14,Tinggi,Sedang,Tidak,Ada,Tidak
