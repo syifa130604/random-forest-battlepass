@@ -1,8 +1,11 @@
 # Simulasi Random Forest - Prediksi Pembelian Battle Pass
 
 Nama: Syifa Kanita Putri G
+
 Kelas: 5C
+
 NIM:301240016
+
 
 Tugas Metode 2 Tesis (Algoritma Random Forest), Magister Teknik Informatika.
 Studi kasus: memprediksi apakah seorang pemain game membeli Battle Pass musim ini.
