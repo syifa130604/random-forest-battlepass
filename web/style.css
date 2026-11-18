@@ -31,3 +31,9 @@ summary{cursor:pointer;font-weight:700}
 small{color:var(--mut)}
 .big{font-size:18px;font-weight:700;margin:10px 0}
 footer{text-align:center;color:var(--mut);padding:18px;font-size:13px}
+
+button.sec{background:transparent;color:var(--pri);border:2px solid var(--pri)}
+.status{margin:10px 0 0;padding:8px 10px;border-radius:6px;background:rgba(46,125,50,.15);font-weight:700;min-height:20px}
+.status:empty{display:none}
+@keyframes flash{from{background:rgba(255,193,7,.35)}to{background:transparent}}
+.flash{animation:flash 1.2s ease-out}

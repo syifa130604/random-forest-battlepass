@@ -43,15 +43,30 @@ function showVote() {
     v.res.map((r, i) => `<tr><td>${i + 1}</td><td>${r.path.join(" &rarr; ")} &rarr; daun</td><td class="${cls(r.label)}"><b>${r.label}</b></td></tr>`).join("") + "</table>" +
     `<p class="big">Vote: Ya = ${v.ya}, Tidak = ${v.tidak} &rarr; <span class="${cls(v.result)}">${v.result === "Ya" ? "Membeli Battle Pass (Ya)" : "Tidak membeli (Tidak)"}</span></p>`;
 }
-function run() {
-  forest = $("#mode").value === "skenario" ? RF.scenarioForest()
-    : RF.randomForest(Math.min(15, Math.max(1, +$("#ntree").value || 3)), +$("#seed").value || 1);
+function run(scroll = true) {
+  const skenario = $("#mode").value === "skenario";
+  const n = Math.min(15, Math.max(1, +$("#ntree").value || 3)), seed = +$("#seed").value || 1;
+  forest = skenario ? RF.scenarioForest() : RF.randomForest(n, seed);
   render();
+  const o = RF.oobEval(forest), jam = new Date().toLocaleTimeString("id-ID");
+  $("#status").textContent = (skenario
+    ? `[${jam}] Skenario laporan dijalankan: 3 pohon (selalu sama dengan Excel).`
+    : `[${jam}] Mode acak: ${forest.length} pohon, seed ${seed}. Seed yang sama = hasil yang sama, ganti seed untuk pohon baru.`)
+    + ` Akurasi OOB ${(o.acc * 100).toFixed(1)}%.`;
+  if (scroll) {
+    const box = $("#trees").parentElement;
+    box.scrollIntoView({behavior: "smooth", block: "start"});
+    box.classList.remove("flash"); void box.offsetWidth; box.classList.add("flash");
+  }
 }
 const def = {Rank: "Tinggi", JamMain: "Sedang", MainTim: "Ya", EventDiskon: "Ada"};
 $("#form").innerHTML = RF.FEATS.map(f => `<label>${f}<select id="in-${f}">${RF.VALUES[f].map(v => `<option${v === def[f] ? " selected" : ""}>${v}</option>`).join("")}</select></label>`).join("");
 RF.FEATS.forEach(f => $("#in-" + f).addEventListener("change", showVote));
-$("#run").addEventListener("click", run);
+$("#run").addEventListener("click", () => run());
+$("#rnd").addEventListener("click", () => {
+  $("#mode").value = "acak"; $("#ntree").disabled = $("#seed").disabled = false;
+  $("#seed").value = 1 + Math.floor(Math.random() * 9999); run();
+});
 $("#mode").addEventListener("change", () => { const a = $("#mode").value === "acak"; $("#ntree").disabled = $("#seed").disabled = !a; });
 $("#ntree").disabled = $("#seed").disabled = true;
-run();
+run(false);
