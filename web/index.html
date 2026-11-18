@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulasi Random Forest - Prediksi Beli Battle Pass</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Simulasi Random Forest</h1>
+  <p>Studi kasus: prediksi apakah pemain membeli Battle Pass. Kriteria pemisah: Gain Ratio, fitur acak m = &radic;4 = 2.</p>
+</header>
+<main>
+  <section class="card">
+    <h2>Pengaturan</h2>
+    <div class="ctrl">
+      <label>Mode
+        <select id="mode">
+          <option value="skenario">Skenario laporan (sama dengan Excel)</option>
+          <option value="acak">Acak baru</option>
+        </select>
+      </label>
+      <label>Jumlah pohon <input id="ntree" type="number" min="1" max="15" value="5"></label>
+      <label>Seed <input id="seed" type="number" value="42"></label>
+      <button id="run">Jalankan</button>
+    </div>
+    <p class="hint">Mode skenario selalu menghasilkan 3 pohon yang sama dengan perhitungan manual. Mode acak membuat bootstrap dan fitur acak baru sesuai seed.</p>
+  </section>
+  <section class="card"><h2>1. Dataset (14 pemain)</h2><div id="dataset" class="scroll"></div></section>
+  <section class="card"><h2>2. Pohon keputusan</h2><div id="trees"></div></section>
+  <section class="card"><h2>3. Evaluasi OOB</h2><div id="oob" class="scroll"></div></section>
+  <section class="card">
+    <h2>4. Prediksi data baru (vote mayoritas)</h2>
+    <div class="ctrl" id="form"></div>
+    <div id="vote"></div>
+  </section>
+</main>
+<footer>Tugas Random Forest &middot; Syifa Kanita Putri G</footer>
+<script src="rf.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
